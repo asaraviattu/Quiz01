@@ -1,0 +1,45 @@
+# Quiz1 is a program that takes a matrix and a vector and returns the appropriate matrix-vector multiplication.
+def matVec(matrix,vector):
+  '''
+  This function takes a matrix and a vector as its arguments and updates each element of the matrix to the appropriate value.
+  '''
+  row_matrix = len(matrix)
+  col_matrix = len(matrix[0])
+  row_vector = len(vector)
+  col_vector = len(vector[0])
+
+  #if statements to make sure that the correct inputs are used
+
+  if col_matrix != row_vector:
+    print("Wrong dimensions, can't multiply")
+    
+  elif col_matrix == 1:
+    print("You inputed a vector where a matrix should be")
+    
+  elif (type(matrix) or type(vector) ) == str:
+    print("You inputed a string instead of a number")
+    
+  else:
+    new_A = [[0 for row in range(col_vector)] for col in range(row_matrix)]
+    print(new_A)
+
+    #for loops in order to execute the desired multiplication
+
+    for i in range(row_matrix):
+      for j in range(col_vector):
+        for k in range(col_matrix):
+          new_A += matrix[i][k] * vector[k]
+    return new_A
+
+#variables for testing algorthim
+test_matrix1 = [[1,2,3],[4,5,6],[7,8,9]]
+test_matrix2 = [1,2,3]
+test_matrix3 = "hello"
+
+test_vector1 = [2,2,2]
+test_vector2 = [[1,2,3],[4,5,6],[7,8,9]]
+test_vector3 = 5
+
+print(matVec(test_matrix1,test_vector1))
+print(matVec(test_matrix2,test_vector2))
+print(matVec(test_matrix3,test_vector3))
